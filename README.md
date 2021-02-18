@@ -31,6 +31,8 @@ Azure IoT Central provides a rich, easy to use IoT Application platform providin
 
 This guide provides insights into various production ready IoT Central integration guides, patterns and samples that you can utilize as part of your overall IoT Solution architecture.
 
+[Business Box]
+
 # IoT Central Integration Architecture Overview
 
 ![](assets/arch_overview.png)
