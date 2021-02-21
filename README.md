@@ -4,27 +4,12 @@
     - [Getting Connected](#getting-connected)
       - [Persistent](#persistent)
       - [Ephemeral](#ephemeral)
-    - [Transform or compute before ingestion into IoT Central:](#transform-or-compute-before-ingestion-into-iot-central)
+    - [Transform and custom computation](#transform-and-custom-computation)
+    - [Guides and samples](#guides-and-samples)
   - [Extract business value from IoT data](#extract-business-value-from-iot-data)
   - [Companion apps & experiences](#companion-apps--experiences)
+    - [Guides and samples](#guides-and-samples-1)
   - [Transition from IoT Central to PaaS services](#transition-from-iot-central-to-paas-services)
-- [Guides, patterns and samples](#guides-patterns-and-samples)
-  - [Getting connected and sending data](#getting-connected-and-sending-data-1)
-    - [Sending batch telemetry to IoT Central using Python SDK](#sending-batch-telemetry-to-iot-central-using-python-sdk)
-    - [Leverage IoT Hub file transfer](#leverage-iot-hub-file-transfer)
-    - [Visualize the device twin representations via Central and IoT Hub](#visualize-the-device-twin-representations-via-central-and-iot-hub)
-    - [Connect a device using MQTT on the browser or PWA](#connect-a-device-using-mqtt-on-the-browser-or-pwa)
-    - [Connecting a phone as a device](#connecting-a-phone-as-a-device)
-    - [Connecting devices using Micro Python](#connecting-devices-using-micro-python)
-    - [Connect simulated devices to IoT Central](#connect-simulated-devices-to-iot-central)
-    - [Phone as a gateway device to IoT Central](#phone-as-a-gateway-device-to-iot-central)
-  - [Extract business value from your IoT data](#extract-business-value-from-your-iot-data)
-    - [Transform device telemetry occasionally connected clients via IoT Central Device Bridge (Stateless)](#transform-device-telemetry-occasionally-connected-clients-via-iot-central-device-bridge-stateless)
-    - [Connect, control and augment device data using IoT Central Device Bridge (Stateful)](#connect-control-and-augment-device-data-using-iot-central-device-bridge-stateful)
-    - [Connect and control non iot-hub capable devices to IoT Central via IoT Central Device Bridge (Stateful)](#connect-and-control-non-iot-hub-capable-devices-to-iot-central-via-iot-central-device-bridge-stateful)
-  - [Companion apps and experiences](#companion-apps-and-experiences)
-    - [Authenticating with IoT Central applications using AAD](#authenticating-with-iot-central-applications-using-aad)
-- [Transition from IoT Central to PaaS services](#transition-from-iot-central-to-paas-services-1)
 
 # Introduction
 
@@ -80,7 +65,59 @@ IoT Central provides various options to support ephemeral device connectivity:
 
 See the [Device connectivity patterns and scenarios](#device-connectivity-patterns-and-scenarios) section that contains samples and guides for getting devices connected, sending data, command and control devices connected to IoT Central.
 
-### Transform or compute before ingestion into IoT Central:
+### Transform and custom computation
+Often it some IoT scenarios may require augmenting data being sent from IoT devices with auxiliary information from external systems or stores before the data is ingested into IoT Central, allowing the augmented data to be used when leveraging IoT Central features. 
+
+Some scenarios may also require transformations of data before ingested into IoT Central, especially when migrating existing devices that may be using data encoded in a legacy or unsupported format.
+
+To support such scenarios, IoT Central provides the following options to perform custom transform or computation before ingesting data into IoT Central:
+
+- Perform custom transform and computations using IoT Edge:
+  
+  IoT Edge can be leveraged to perform custom transforms and computation using custom edge modules. IoT Edge is applicable when your devices are already capable of communicating via Azure IoT Hub SDKs
+
+- Perform custom transform and computations using Azure IoT Central Device Bridge:
+  
+  IoT Central Device Bridge can also be leveraged to perform transform and custom computations by leveraging IoT Central Device Bridge adapters.
+
+### Guides and samples
+Below are some guides, samples and utilities you can leverage for exploring various device connectivity patterns with IoT Central described above:
+
+- **[IoT Central Web MQTT Device]([Something](https://github.com/iot-for-all/iot-central-web-mqtt-device))**
+  
+  This repository provides a fully functional sample of a device using a persistent connection in a web browser. This sample be used for scenarios where a device needs to connect over a browser environment.
+
+- **[IoT Central Batch Telemetry with Python](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python)**
+
+  This repository contains a sample that can be used for occasionally connected devices using ephemeral connectivity pattern, and send a batch of telemetry to IoT Central via HTTP.
+
+- **[IoT Central SDK for MicroPython](https://github.com/iot-for-all/iotc-micropython-client)**
+
+  This repository contains the source for a MicroPython client SDK that is capable of connecting to IoT Central. Use this library for leveraging MicroPython on your device. 
+
+- **[Phone as a Device](https://github.com/iot-for-all/iotc-paad)**
+
+  This repository contains a sample of a phone client that connects to IoT Central device telemetry from the phone and allow controlling the device via IoT Central.
+
+- **[IoT Central Python Sample](https://github.com/iot-for-all/Iot_Central_Python_Sample)**
+
+  This repository contains a sample device that connects and communicates with IoT Central using the Azure IoT native python client.
+
+- **[Continuous Patient Monitoring Sample](https://github.com/iot-for-all/iotc-cpm-sample)**
+
+  This repository contains a sample where a phone can be used as a gateway allowing downstream BLE devices to connect with IoT Central.
+
+- **[IoT Central Twin Viewer](https://github.com/iot-for-all/iotc-twinviewer)**
+
+  This repository contains a utility web app that you can use to connect a device in a web environment, visualize the TWIN for the device and interact with IoT Central by updating the device twin and visualize updates to the twin via IoT Central.
+
+- **[Transform using Azure IoT Edge](https://github.com/iot-for-all/iot-central-transform-with-iot-edge)**
+
+  This repository contains a sample of how to leverage Azure IoT Edge to transform incoming messages from leaf devices before forwarding to IoT Central.
+
+- **[Transform using Azure IoT Bridge](https://github.com/iot-for-all/iot-central-transform-with-device-bridge)**
+
+  This repository contains two samples on how to leverage Azure IoT Central Bridge with IoT Central. The first sample describes how to leverage Azure IoT Central Bridge to perform simple message transform. The second sample describes how to leverage Azure IoT Central Bridge to enable devices communicating via an alternate protocol like COAP with IoT Central.
 
 ## Extract business value from IoT data
 
@@ -95,44 +132,14 @@ While IoT Central provides rich operator dashboards and visualizations, many IoT
 - Utilize IoT Central's control plane and data plane REST APIs to build rich fit for purpose visualizations
 - Utilize IoT Central's data plane REST API to augment external services with device data and metadata.
 
-See the [Companion apps and experiences](#companion-apps-and-experiences) section that contains more details, patterns and samples for building companion apps and experiences that integrate with IoT Central.
-
-## Transition from IoT Central to PaaS services
-
-
-# Guides, patterns and samples
-
-## Getting connected and sending data
-The following sections provide guidance, patterns and samples that you can leverage for various device connectivity sc
-
-### Sending batch telemetry to IoT Central using Python SDK
-### Leverage IoT Hub file transfer 
-### Visualize the device twin representations via Central and IoT Hub
-### Connect a device using MQTT on the browser or PWA
-### Connecting a phone as a device
-### Connecting devices using Micro Python
-### Connect simulated devices to IoT Central
-### Phone as a gateway device to IoT Central
-
-## Extract business value from your IoT data
-### Transform device telemetry occasionally connected clients via IoT Central Device Bridge (Stateless)
-### Connect, control and augment device data using IoT Central Device Bridge (Stateful)
-### Connect and control non iot-hub capable devices to IoT Central via IoT Central Device Bridge (Stateful)
-
-## Companion apps and experiences
-The following sections provide guidance and patterns that you can leverage when building companion app experiences leveraging IoT Central. 
-
-### Authenticating with IoT Central applications using AAD
-Many companion applications and experiences first need to overcome the hurdle of authenticating and authorizing your users to be able to access IoT data in IoT Central. The following sample projects provide guidance on how to successfully setup and configure your Azure Active Directory to authenticate and authorize your companion apps and experiences with IoT Central.
-
-- [Setting up an AAD application to work with IoT Central](https://github.com/iot-for-all/iotc-aad-setup)
+### Guides and samples
+- **[Setting up an AAD application to work with IoT Central](https://github.com/iot-for-all/iotc-aad-setup)**
   
   This guide walks you through how to setup your Azure Active Directory to authenticate your users with IoT Central successfully so that your companion experiences can leverage IoT Central's Public API for accessing iot data in your application(s)
 
-- [Building an companion experience with IoT Central REST API](https://github.com/iot-for-all/iotc-aad-setup)
+- **[Building an companion experience with IoT Central REST API](https://github.com/iot-for-all/iotc-aad-setup)**
   
   This sample project provides a blueprint on how to authenticate, authorize and integrate an companion app experience with Azure IoT Central public REST APIs.
 
-# Transition from IoT Central to PaaS services
 
-
+## Transition from IoT Central to PaaS services
