@@ -83,7 +83,7 @@ To support such scenarios, IoT Central provides the following options to perform
 ### Guides and samples
 Below are some guides, samples and utilities you can leverage for exploring various device connectivity patterns with IoT Central described above:
 
-- **[IoT Central Web MQTT Device](https://github.com/iot-for-all/iot-central-web-mqtt-device)**
+- **[IoT Central Web MQTT Device](https://github.com/Azure/iot-central-web-mqtt-device)**
   
   This repository provides a fully functional sample of a device using a persistent connection in a web browser. This sample be used for scenarios where a device needs to connect over a browser environment.
 
