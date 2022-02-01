@@ -83,11 +83,11 @@ To support such scenarios, IoT Central provides the following options to perform
 ### Guides and samples
 Below are some guides, samples and utilities you can leverage for exploring various device connectivity patterns with IoT Central described above:
 
-- **[IoT Central Web MQTT Device]([Something](https://github.com/iot-for-all/iot-central-web-mqtt-device))**
+- **[IoT Central Web MQTT Device](https://github.com/iot-for-all/iot-central-web-mqtt-device)**
   
   This repository provides a fully functional sample of a device using a persistent connection in a web browser. This sample be used for scenarios where a device needs to connect over a browser environment.
 
-- **[IoT Central Batch Telemetry with Python](https://github.com/iot-for-all/iot-central-batch-telemetry-with-python)**
+- **[IoT Central Batch Telemetry with Python](https://github.com/Azure/iot-central-batch-telemetry-with-python)**
 
   This repository contains a sample that can be used for occasionally connected devices using ephemeral connectivity pattern, and send a batch of telemetry to IoT Central via HTTP.
 
