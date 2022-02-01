@@ -63,7 +63,7 @@ IoT Central provides various options to support ephemeral device connectivity:
   
   For IoT Solutions currently integrated with other IoT clouds such as Sigfox, Particle or The Things Network (TTN), you can utilize Azure IoT Central Device Bridge to forward messages from other IoT Clouds to IoT Central.
 
-See the [Device connectivity patterns and scenarios](#device-connectivity-patterns-and-scenarios) section that contains samples and guides for getting devices connected, sending data, command and control devices connected to IoT Central.
+See the [Guides and Samples](#guides-and-samples) section that contains guides and samples for getting devices connected, sending data, command and control devices connected to IoT Central.
 
 ### Transform and custom computation
 Many IoT scenarios may require augmenting the data being sent from IoT devices with auxiliary information from external systems or stores before the data is ingested into IoT Central, allowing the augmented data to be used when leveraging IoT Central features. 
